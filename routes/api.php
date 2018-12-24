@@ -14,3 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::get('v1/users', 'UserController@User');
+Route::post('v1/register', 'AuthController@Register');
+Route::post('v1/login', 'AuthController@Login');

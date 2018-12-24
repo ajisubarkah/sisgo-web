@@ -9,7 +9,10 @@ class UserTransformers extends TransformerAbstract{
     public function transform(User $user){
         return [
             'username' => $user->username,
-            'registered' => $user->create_at->diffForHuman(),    
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => $user->password,
+            'token' => $user->token,
         ];
     }
 }
