@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    
+
     public function Register(Request $request, User $user){
         $this->validate($request,[
             'username' => 'required',
@@ -37,15 +37,12 @@ class AuthController extends Controller
 
     public function Login(Request $request, User $user){
 
-        if(!Auth::attempt(['username'=>$request->username, 'password'=>$request->password])){
-            return response()->json(['status'=>'error','error'=>401]);
+        if(Auth::attempt(['username'=>$request->username, 'password'=>$request->password])){
+            $users = $user->find(Auth::user()->id);
+            return response()->json(['status'=>200,'message'=>'OK','token'=>$users->token]);
+        } else {
+            return response()->json(['status'=>401,'message'=>'Unauthorized','token'=>null]);
         }
 
-        $users = $user->find(Auth::user()->id);
-
-        return fractal()
-            ->item($users)
-            ->transformWith(new UserTransformers)
-            ->toArray();
     }
 }
