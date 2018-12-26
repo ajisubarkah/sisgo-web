@@ -11,7 +11,7 @@ class UserTransformers extends TransformerAbstract{
             'username' => $user->username,
             'name' => $user->name,
             'email' => $user->email,
-            'token' => $user->token,
+            'api_token' => $user->api_token,
         ];
     }
 }

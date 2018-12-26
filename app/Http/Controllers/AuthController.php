@@ -26,7 +26,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'token' => bcrypt($request->email)
+            'api_token' => bcrypt($request->email)
         ]);
 
         return fractal()
@@ -39,7 +39,7 @@ class AuthController extends Controller
 
         if(Auth::attempt(['username'=>$request->username, 'password'=>$request->password])){
             $users = $user->find(Auth::user()->id);
-            return response()->json(['status'=>200,'message'=>'OK','token'=>$users->token]);
+            return response()->json(['status'=>200,'message'=>'OK','token'=>$users->api_token]);
         } else {
             return response()->json(['status'=>401,'message'=>'Unauthorized','token'=>null]);
         }

@@ -15,8 +15,8 @@ class CreateRestockTable extends Migration
     {
         Schema::create('restock', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamp('create_at');
-            $table->timestamp('update_at')->nullable();
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

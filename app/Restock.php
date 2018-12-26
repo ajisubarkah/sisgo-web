@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Restock extends Model
 {
     protected $table = "restock";
-    public $primarikery = "id";
+    public $primarikey = "id";
     public $timestamp = true;
+
+    protected $fillable = [
+        'user_id',
+    ];
 }

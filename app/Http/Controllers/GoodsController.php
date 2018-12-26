@@ -4,10 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Goods;
+use App\Transformers\GoodTransformers;
+use League\Fractal\Resource\Collection;
 
-class InventoryController extends Controller
+class GoodsController extends Controller
 {
-    public function GoodsList(Goods $goods){
-		
+    public function goodsList(Goods $good){
+        $goods = $good->all();
+
+        return fractal()
+            ->collection($goods)
+            ->transformWith(new GoodTransformers)
+            ->toArray();
 	}
+
+    public function detailGood(Request $request, Goods $good){
+        if($goods = Goods::find($request->id)){
+            return fractal()
+                ->item($goods)
+                ->transformWith(new GoodTransformers)
+                ->toArray();
+        } else {
+            return response()->json(['data'=>null]);
+        }
+    }
 }
