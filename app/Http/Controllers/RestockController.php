@@ -24,7 +24,7 @@ class RestockController extends Controller
         $restocks = $restock->create([
             'user_id'=>$request->user_id,
         ]);
-
-        return response()->json(['status'=>'201','id'=>$restocks->id]);
+        
+        return response()->json(['status'=>201,'id'=>$restocks->id]);
     }
 }

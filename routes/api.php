@@ -23,3 +23,7 @@ Route::post('v1/restock/insertrestock', 'RestockController@addRestock');
 
 Route::get('v1/good/listgoods', 'GoodsController@goodsList');
 Route::post('v1/good/detailgood', 'GoodsController@detailGood');
+
+Route::post('v1/good/stock/updatestock','GoodStockController@addStock');
+Route::post('v1/good/stock/liststock','GoodStockController@listStock');
+
