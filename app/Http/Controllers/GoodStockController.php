@@ -18,7 +18,7 @@ class GoodStockController extends Controller
 
         Goods::where('id', $request->goods_id)->increment('stock', $request->add_stock);
 
-        return response()->json(['status'=>201,'id'=>$restock->id]);
+        return response()->json(['status'=>201,'id'=>$goods->id]);
     }
 
     public function listStock(Request $request, GoodsStock $good){
