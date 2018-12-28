@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Goods extends Model
 {
     protected $table = "goods";
-    public $primarikery = "id";
+    public $primarikey = "id";
     public $timestamp = true;
 
+    protected $fillable = [
+        'name', 'barcode', 'purchase', 'selling', 'stock',
+    ];
 }

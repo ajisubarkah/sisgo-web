@@ -14,6 +14,12 @@ use Illuminate\Http\Request;
 */
 
 Route::get('v1/users', 'UserController@User');
-Route::get('v1/restock', 'RestockController@getList');
+
 Route::post('v1/register', 'AuthController@Register');
 Route::post('v1/login', 'AuthController@Login');
+
+Route::get('v1/restock/listrestock', 'RestockController@getList');
+Route::post('v1/restock/insertrestock', 'RestockController@addRestock');
+
+Route::get('v1/good/listgoods', 'GoodsController@goodsList');
+Route::post('v1/good/detailgood', 'GoodsController@detailGood');
