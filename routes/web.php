@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', 'AuthController@form')->name('form');
+Route::post('attempt', 'AuthController@attempt')->name('attempt');
+Route::get('/welcome', function () {
     return view('welcome');
 });

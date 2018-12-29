@@ -12,6 +12,27 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function form() {
+        return view('signin');
+    }
+
+    public function attempt(Request $request) {
+        $this->validate($request, [
+            'username' => 'exists:users,username',
+            'password' => 'required',
+        ]);
+
+        $attempts = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
+
+        if (Auth::attempt($attempts)) {
+            return view('welcome');
+        }
+
+        return redirect()->back();
+    }
 
     public function Register(Request $request, User $user){
         $this->validate($request,[
@@ -30,9 +51,9 @@ class AuthController extends Controller
         ]);
 
         return fractal()
-            ->item($user)
-            ->transformWith(new UserTransformers)
-            ->toArray();
+        ->item($user)
+        ->transformWith(new UserTransformers)
+        ->toArray();
     }
 
     public function Login(Request $request, User $user){
