@@ -16,6 +16,7 @@ class AddUsernameAndTokenToUser extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->unique()->after('name');
             $table->string('api_token')->after('password');
+			
         });
     }
 

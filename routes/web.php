@@ -13,6 +13,11 @@
 
 Route::get('/', 'AuthController@form')->name('form');
 Route::post('attempt', 'AuthController@attempt')->name('attempt');
+
 Route::get('/welcome', function () {
     return view('welcome');
+});
+
+Route::get('/admin', function () {
+    return view('pages.dashboard');
 });
