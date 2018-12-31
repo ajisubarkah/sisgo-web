@@ -11,6 +11,6 @@ class Goods extends Model
     public $timestamp = true;
 
     protected $fillable = [
-        'name', 'barcode', 'purchase', 'selling', 'stock',
+        'name', 'barcode', 'purchase', 'selling', 'stock', 'image',
     ];
 }

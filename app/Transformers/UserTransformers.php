@@ -8,10 +8,10 @@ use League\Fractal\TransformerAbstract;
 class UserTransformers extends TransformerAbstract{
     public function transform(User $user){
         return [
-            'username' => $user->username,
-            'name' => $user->name,
-            'email' => $user->email,
-            'api_token' => $user->api_token,
+            'strUsername' => $user->username,
+            'strName' => $user->name,
+            'strEmail' => $user->email,
+            'strToken' => $user->api_token,
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Transformers\GoodStockTransformers;
 use App\GoodsStock;
 use App\Goods;
 
@@ -21,9 +22,11 @@ class GoodStockController extends Controller
         return response()->json(['status'=>201,'id'=>$goods->id]);
     }
 
-    public function listStock(Request $request, GoodsStock $good){
+    public function listStock(Request $request){
         $goods = GoodsStock::where('restock_id', $request->id)->get();
-        
-        return response()->json(['data'=>$goods]);
+        return fractal()
+            ->collection($goods)
+            ->transformWith(new GoodStockTransformers)
+            ->toArray();
     }
 }
