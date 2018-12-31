@@ -16,7 +16,7 @@ class AddUsernameAndTokenToUser extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->unique()->after('name');
             $table->string('api_token')->after('password');
-			
+			      $table->string('photo')->after('email')->nullable();
         });
     }
 
@@ -30,6 +30,7 @@ class AddUsernameAndTokenToUser extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('username');
             $table->dropColumn('api_token');
+            $table->dropColumn('photo');
         });
     }
 }

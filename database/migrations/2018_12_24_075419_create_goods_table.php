@@ -20,6 +20,7 @@ class CreateGoodsTable extends Migration
             $table->double('purchase');
             $table->double('selling');
             $table->integer('stock');
+            $table->string('image')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
         });

@@ -35,14 +35,16 @@ class DatabaseSeeder extends Seeder
             'barcode'=>'999234567812',
             'purchase'=>40000,
             'selling'=>50000,
-            'stock'=>0
+            'stock'=>0,
+            'image'=>'storage/goods/999234567812.jpg'
         ]);
         Goods::create([
             'name'=>'Kursi Plastik',
             'barcode'=>'999234567811',
-            'purchase'=>13500,
-            'selling'=>15000,
-            'stock'=>0
+            'purchase'=>25000,
+            'selling'=>32500,
+            'stock'=>0,
+            'image'=>'storage/goods/999234567811.jpg'
         ]);
     }
 }
