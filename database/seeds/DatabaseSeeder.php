@@ -25,7 +25,14 @@ class DatabaseSeeder extends Seeder
             'username'=>'hendry',
             'name'=>'Hendry Nurcahyo',
             'password'=>bcrypt('123456'),
-            'email'=>'hendry@gmail.com',
+            'email'=>'hendry@email.com',
+            'api_token'=>bcrypt('123456')
+        ]);
+        User::create([
+            'username'=>'dina',
+            'name'=>'Dina Pitri Masruhan',
+            'password'=>bcrypt('123456'),
+            'email'=>'dina@emial.com',
             'api_token'=>bcrypt('123456')
         ]);
 

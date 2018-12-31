@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
 
     <title>SISGO - Login </title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('favicon.ico')}}" />
+    <link rel="stylesheet" href="{{url('css/reset.css')}}">
 
-    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="{{url('css/style.css')}}" media="screen" type="text/css" />
 
 </head>
 
@@ -17,9 +17,9 @@
 
     <div class="wrap">
         <div class="avatar">
-            <img src="image/logo.png">
+            <img src="{{url('image/logo.png')}}">
         </div>
-        <form role="form" method="POST" action="{{ route('attempt') }}">
+        <form role="form" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
             <input name="username" type="text" placeholder="username" required>
             <div class="bar">

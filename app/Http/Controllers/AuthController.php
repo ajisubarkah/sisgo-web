@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function form() {
-        return view('signin');
+        return view('login');
     }
 
-    public function attempt(Request $request) {
+    public function attemptLogin(Request $request) {
         $this->validate($request, [
             'username' => 'exists:users,username',
             'password' => 'required',
@@ -28,7 +28,7 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($attempts)) {
-            return view('welcome');
+            return view('pages.dashboard');
         }
 
         return redirect()->back();
