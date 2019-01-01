@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', 'AuthController@form')->name('form');
+Route::get('/', 'AuthController@form')->name('home');
 Route::post('login', 'AuthController@attemptLogin')->name('login');
+Route::get('logout', 'AuthController@logout');
 
 Route::get('dashboard', function () {
     return view('pages.dashboard');
-});
+})->middleware('auth');

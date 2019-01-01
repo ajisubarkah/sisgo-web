@@ -16,6 +16,11 @@ class AuthController extends Controller
         return view('login');
     }
 
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
+    }
+
     public function attemptLogin(Request $request) {
         $this->validate($request, [
             'username' => 'exists:users,username',
@@ -28,7 +33,7 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($attempts)) {
-            return view('pages.dashboard');
+            return redirect('dashboard');
         }
 
         return redirect()->back();
