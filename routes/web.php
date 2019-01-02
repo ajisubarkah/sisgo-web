@@ -16,4 +16,4 @@ Route::post('login', 'AuthController@attemptLogin')->name('login');
 
 Route::get('dashboard', function () {
     return view('pages.dashboard');
-});
+})->name('dashboard')->middleware('auth');

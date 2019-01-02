@@ -19,7 +19,7 @@
         <div class="avatar">
             <img src="{{url('image/logo.png')}}">
         </div>
-        <form role="form" method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
             <input name="username" type="text" placeholder="username" required>
             <div class="bar">
