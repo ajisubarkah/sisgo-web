@@ -19,10 +19,10 @@ class GoodsController extends Controller
             ->toArray();
 	}
 
-    public function detailGood(Request $request, Goods $good){
+    public function detailGood(Request $request){
         if($goods = Goods::find($request->id)){
             return fractal()
-                ->item($goods)
+                ->collection($goods)
                 ->transformWith(new GoodTransformers)
                 ->toArray();
         } else {
