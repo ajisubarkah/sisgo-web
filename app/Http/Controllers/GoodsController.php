@@ -22,7 +22,7 @@ class GoodsController extends Controller
     public function detailGood(Request $request){
         if($goods = Goods::find($request->id)){
             return fractal()
-                ->collection($goods)
+                ->item($goods)
                 ->transformWith(new GoodTransformers)
                 ->toArray();
         } else {
