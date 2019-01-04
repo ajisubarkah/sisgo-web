@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function form() {
-        return view('login');
+        if(Auth::guest())
+            return view('login');
+        else
+            return redirect('dashboard');
     }
 
     public function logout(){
@@ -27,12 +30,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $attempts = [
-            'username' => $request->username,
-            'password' => $request->password,
-        ];
-
-        if (Auth::attempt($attempts)) {
+        if (Auth::attempt(['username'=>$request->username, 'password'=>$request->password])) {
             return redirect('dashboard');
         }
 

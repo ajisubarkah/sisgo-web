@@ -13,4 +13,8 @@ class Goods extends Model
     protected $fillable = [
         'name', 'barcode', 'purchase', 'selling', 'stock', 'image',
     ];
+
+    public static function convertToRupiah($angka){
+        return 'Rp. ' . strrev(implode('.',str_split(strrev(strval($angka)),3))) . ',00';
+    }
 }

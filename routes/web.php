@@ -14,6 +14,11 @@
 Route::get('/', 'AuthController@form')->name('home');
 Route::post('login', 'AuthController@attemptLogin')->name('login');
 Route::get('logout', 'AuthController@logout');
-Route::get('dashboard', function () {
-    return view('pages.dashboard');
-})->name('dashboard')->middleware('auth');
+
+Route::middleware('auth')->group(function(){
+    Route::get('dashboard', 'IndexController@dashboard')
+        ->name('dashboard');
+
+    Route::get('storage', 'IndexController@storage')
+        ->name('storage');
+});
