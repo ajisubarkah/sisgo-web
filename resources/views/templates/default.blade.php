@@ -21,7 +21,7 @@
 <body>
     <div style="min-height: 100vh">
         @include('components.sidebar')
-        <div class="main-panel">
+        <div class="main-panel" >
             @include('components.navbar')
             @yield('body')
             @include('components.footer')

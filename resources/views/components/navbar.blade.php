@@ -43,8 +43,7 @@
                         <p class="d-lg-none d-md-block">Account</p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="{{url('profile')}}"><strong>{{auth()->user()->name}}</strong></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{url('logout')}}">Log out</a>
                     </div>
