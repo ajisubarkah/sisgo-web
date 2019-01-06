@@ -2,7 +2,7 @@
 
 @section('body')
 <div class="content">
-    <a href="#" class="btn btn-primary btn-round" style="margin: 0px 30px 30px">
+    <a href="{{url('storages/new')}}" class="btn btn-primary btn-round" style="margin: 0px 30px 30px">
         <i class="material-icons">add</i>New
     </a>
     <div class="container-fluid">

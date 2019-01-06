@@ -22,12 +22,14 @@ Route::middleware('auth')->group(function(){
     Route::prefix('storages')->group(function(){
         Route::get('/', 'IndexController@storage')
             ->name('storages');
+        Route::get('new', 'Storages\NewController@index');
+        Route::post('new', 'Storages\NewController@goods')
+            ->name('newgoods'); 
         Route::get('{id}/edit', 'Storages\EditController@edit');
         Route::post('', 'Storages\EditController@editGoods')
             ->name('editgoods');
         Route::get('view', 'Storages\ViewController@view');
     });
-
     Route::prefix('account')->group(function(){
         Route::get('/', 'IndexController@account')
             ->name('account');
@@ -39,7 +41,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('profile')->group(function(){
         Route::get('/', 'IndexController@profile')
             ->name('profile');
-        Route::post('update', 'Profiles\UpdateController@update')
+        Route::post('', 'Profiles\UpdateController@update')
             ->name('updateprofile');
     });
 });

@@ -10,15 +10,15 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Added New Profile</h4>
-                            <p class="card-category">Complete your profile</p>
+                            <h4 class="card-title">New Profile</h4>
+                            <p class="card-category">Added new account.</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group ">
                                         <label class="bmd-label-floating">Username </label>
-                                        <input type="text" class="form-control" id="username" required>
+                                        <input name="username" type="text" class="form-control" id="username" required>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
@@ -44,7 +44,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Confirm Password</label>
-                                    <input name="confirmPassword" type="password" id="confirmPassword" equalTo="#password" class="form-control" minLength="6" required>
+                                    <input name="password_confirmation" type="password" id="password_confirmation" equalTo="#password" class="form-control" minLength="6" required>
                                 </div>
                             </div>
                         </div>

@@ -54,9 +54,9 @@ class AuthController extends Controller
         ]);
 
         return fractal()
-        ->item($user)
-        ->transformWith(new UserTransformers)
-        ->toArray();
+            ->item($user)
+            ->transformWith(new UserTransformers)
+            ->toArray();
     }
 
     public function Login(Request $request, User $user){

@@ -19,23 +19,24 @@ class EditController extends Controller
             'name' => 'required',
             'barcode' => 'required',
             'selling' => 'required',
-            'purchase' => 'required'
+            'purchase' => 'required',
+            'photo' => 'image|max:5000',
         ]);
-        
+
         $goods = Goods::find($request->id);
         
+        if($request->hasFile('photo')){
+            $fileNameToStore = $request->barcode . '.jpg';
+            
+            $path = $request->file('photo')->storeAs('public/goods', $fileNameToStore);
+            
+            $goods->image = 'storage/goods/' . $fileNameToStore;
+        }
+
         $goods->name = $request->name;
         $goods->barcode = $request->barcode;
         $goods->selling = Goods::deconvertFromRupiah($request->selling);
         $goods->purchase = Goods::deconvertFromRupiah($request->purchase);
-
-        if($request->hasFile('photo')) {
-            
-            $fileNameToStore= $request->barcode . '.jpg';
-            
-            $path = $request->file('photo')->storeAs('public/goods', $fileNameToStore);    
-            $goods->photo = $fileNameToStore;
-        }
 
         $goods->save();
         

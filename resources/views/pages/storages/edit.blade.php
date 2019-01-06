@@ -4,7 +4,7 @@
 <div class="content">
     <a href="{{url('storages')}}" class="btn btn-primary btn-round" style="margin: 0px 30px 30px">Back</a>
     <div class="container-fluid">
-        <form method="POST" action="{{URL::route('editgoods')}}" id="FormValidation">
+        <form method="POST" action="{{URL::route('editgoods')}}" enctype="multipart/form-data" id="FormValidation">
             @csrf
             <input type="hidden" name="id" value="{{$goods->id}}">
             <div class="row">
@@ -49,22 +49,24 @@
                 <div class="col-md-4">
                     <div class="card card-profile">
                         <div class="fileinput text-center fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-new thumbnail" style="margin-top: 20px; margin-bottom: 50px; object-fit: cover">
+                            <div class="fileinput-new thumbnail" style="margin-top: 20px; margin-bottom: 50px">
                                 @if($goods->image==null)
-                                <img src="{{url('image/no_photo.png')}}">
+                                <img style="thumbnail" src="{{url('image/no_photo.png')}}">
                                 @else
-                                <img src="{{url(''.$goods->image)}}">
+                                <img style="thumbnail" src="{{url(''.$goods->image)}}">
                                 @endif
                             </div>
                             <div class="fileinput-preview fileinput-exists thumbnail" style="margin-top: 20px; margin-bottom: 50px;"></div>
                             <div>
                                 <span class="btn btn-primary btn-round btn-file">
-                                    <span class="fileinput-new">Upload Photo</span>
+                                    <span class="fileinput-new">Add Photo</span>
+                                    <span class="fileinput-exists">Change</span>
+                                    <input type="hidden">
                                     <input type="file" name="photo">
                                 </span>
                                 <br>
-                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
-                                    <i class="fa fa-times"></i>Remove
+                                <a class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                                    <i class="fa fa-times"></i>Remove                            
                                 </a>
                             </div>
                         </div>

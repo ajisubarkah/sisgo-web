@@ -3,8 +3,9 @@
 @section('body')
 <div class="content">
   <div class="container-fluid">
-    <form id="FormValidation">
-    {{csrf_field()}}  
+    <form method="POST" action="{{URL::route('updateprofile')}}" enctype="multipart/form-data" id="FormValidation">
+    {{csrf_field()}}
+    <input type="hidden" name="id" value="{{$profile->id}}">
     <div class="row">
       <div class="col-md-8">
         <div class="card">
@@ -43,11 +44,11 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Confirm Password</label>
-                  <input name="confirmPassword" type="password" id="confirmPassword" equalTo="#password" class="form-control">
+                  <input name="password_confirmation" type="password" id="password_confirmation" equalTo="#password" class="form-control">
                 </div>
               </div>
             </div>
-            <button type="submit" href="storages/edit" class="btn btn-primary pull-right">Update Profile</button>
+            <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -59,29 +60,19 @@
               @if($profile->photo==null)
               <img src="{{url('image/no_photo.png')}}">
               @else
-              <img src="{{auth()->user()->photo}}">
+              <img src="{{$profile->photo}}">
               @endif
             </div>
             <div class="fileinput-preview fileinput-exists thumbnail" style="margin-top: 20px; margin-bottom: 50px;"></div>
               <div>
                 <span class="btn btn-primary btn-round btn-file">
-                  <span class="fileinput-new">Add Photo</span>
-                  <span class="fileinput-exists">Change</span>
-                  <input type="hidden">
+                  <span class="fileinput-new">Upload Photo</span>
+                  <span class="fileinput-exists">Change Photo</span>
                   <input type="file" name="photo">
-                  <div class="ripple-container">
-                    <div class="ripple-decorator ripple-on ripple-out" style="left: 89.6719px; top: 8px; background-color: rgb(255, 255, 255); transform: scale(15.75);"></div>
-                    <div class="ripple-decorator ripple-on ripple-out" style="left: 89.6719px; top: 8px; background-color: rgb(255, 255, 255); transform: scale(15.75);"></div>
-                  </div>
                 </span>
                 <br>
                 <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
                   <i class="fa fa-times"></i>Remove
-                  <div class="ripple-container">
-                    <div class="ripple-decorator ripple-on ripple-out" style="left: 66.6719px; top: 23px; background-color: rgb(255, 255, 255); transform: scale(15.5098);"></div>
-                    <div class="ripple-decorator ripple-on ripple-out" style="left: 66.6719px; top: 23px; background-color: rgb(255, 255, 255); transform: scale(15.5098);"></div>
-                    <div class="ripple-decorator ripple-on ripple-out" style="left: 66.6719px; top: 23px; background-color: rgb(255, 255, 255); transform: scale(15.5098);"></div>
-                  </div>
                 </a>
               </div>
             </div>
@@ -115,4 +106,5 @@
       setFormValidation('#FormValidation');
     });
   </script>
+  
 @endpush
