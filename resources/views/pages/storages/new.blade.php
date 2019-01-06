@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                             </div>
-                                <button type="submit" class="btn btn-primary pull-right">Update Goods</button>
+                                <button type="submit" class="btn btn-primary pull-right">Add Goods</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>

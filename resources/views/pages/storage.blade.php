@@ -27,12 +27,16 @@
                                 </thead>
                                 @foreach($goods as $data)
                                 <tbody>
+                                    @if($data->stock == 0)
+                                    <tr style="color: red">
+                                    @else
                                     <tr>
+                                    @endif
                                         <td name="id">{{$data->id}}</td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->barcode}}</td>
                                         <td>{{App\Goods::convertToRupiah($data->selling)}}</td>
-                                        <td>{{App\Goods::convertToRupiah($data->purchase)}}</td>
+                                        <td>{{App\Goods::convertToRupiah($data->purchase)}}</td>                                        
                                         <td>{{$data->stock}}</td>
                                         <td class="td-actions text-left">
                                             <a style="background: none; border: none" href="{{url('storages/'.$data->id.'/edit')}}" rel="tooltip" class="btn btn-primary btn-link btn-sm" data-original-title="Edit Good">
