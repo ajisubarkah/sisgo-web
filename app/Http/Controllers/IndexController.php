@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Goods;
 use App\User;
+use Auth;
 
 class IndexController extends Controller
 {
@@ -27,15 +28,17 @@ class IndexController extends Controller
     }
 
     public function storage() {
-        $data = Goods::all();
+        $data = Goods::paginate(10);
         return view('pages.storage')->with(['goods'=>$data]);
     }
 
     public function account() {
-        return view('pages.account');
+        $users = User::paginate(10);
+        return view('pages.account')->with(['users'=>$users]);
     }
 
     public function profile() {
-        return view('pages.profile');
+        $profile = User::find(Auth::user()->id);
+        return view('pages.profile')->with(['profile'=>$profile]);
     }
 }

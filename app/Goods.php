@@ -15,6 +15,10 @@ class Goods extends Model
     ];
 
     public static function convertToRupiah($angka){
-        return 'Rp. ' . strrev(implode('.',str_split(strrev(strval($angka)),3))) . ',00';
+        return 'Rp. ' . strrev(implode('.',str_split(strrev(strval($angka)),3)));
+    }
+
+    public static function deconvertFromRupiah($angka){
+        return intval(preg_replace("/,.*|[^0-9]/", '', $angka));
     }
 }

@@ -12,19 +12,19 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item {{Request::is('storages') ? 'active' : ''}}">
+            <li class="nav-item {{Request::is('storages') || Request::is('storages/*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('storages') }}">
                     <i class="material-icons">store</i>
                     <p>Storage</p>
                 </a>
             </li>
-            <li class="nav-item {{Request::is('account') ? 'active' : ''}}">
+            <li class="nav-item {{Request::is('account') || Request::is('account/*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{url('account')}}">
                     <i class="material-icons">supervisor_account</i>
                     <p>Account</p>
                 </a>
             </li>
-            <li class="nav-item {{Request::is('profile') ? 'active' : ''}}">
+            <li class="nav-item {{Request::is('profile') || Request::is('profile/*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{url('profile')}}">
                     <i class="material-icons">person</i>
                     <p>User Profile</p>

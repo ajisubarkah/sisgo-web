@@ -2,9 +2,9 @@
 
 @section('body')
 <div class="content">
-    <div style="margin-left: 30px; margin-bottom: 20px">
-        <a href="#pablo" class="btn btn-primary btn-round"><i class="material-icons">add</i>New<div class="ripple-container"></div></a>
-    </div>
+    <a href="#" class="btn btn-primary btn-round" style="margin: 0px 30px 30px">
+        <i class="material-icons">add</i>New
+    </a>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -28,17 +28,17 @@
                                 @foreach($goods as $data)
                                 <tbody>
                                     <tr>
-                                        <td>{{$data->id}}</td>
+                                        <td name="id">{{$data->id}}</td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->barcode}}</td>
                                         <td>{{App\Goods::convertToRupiah($data->selling)}}</td>
                                         <td>{{App\Goods::convertToRupiah($data->purchase)}}</td>
                                         <td>{{$data->stock}}</td>
                                         <td class="td-actions text-left">
-                                            <button type="button" rel="tooltip" class="btn btn-primary btn-link btn-sm" data-original-title="Edit Good">
+                                            <a style="background: none; border: none" href="{{url('storages/'.$data->id.'/edit')}}" rel="tooltip" class="btn btn-primary btn-link btn-sm" data-original-title="Edit Good">
                                                 <i class="material-icons">edit</i>
                                                 <div class="ripple-container"></div>
-                                            </button>
+                                            </a>
                                             <button type="button" rel="tooltip" class="btn btn-primary btn-link btn-sm" data-original-title="Detail Good">
                                                 <i class="material-icons">visibility</i>
                                                 <div class="ripple-container"></div>
@@ -47,6 +47,7 @@
                                     </tr>
                                 </tbody>
                                 @endforeach
+                                {{$goods->links()}}
                             </table>
                         </div>
                     </div>

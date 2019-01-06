@@ -11,8 +11,8 @@ use League\Fractal\Resource\Collection;
 
 class RestockController extends Controller
 {
-    public function getList(Restock $restock){
-        $restocks = $restock->all();
+    public function getList(){
+        $restocks = Restock::all();
 
         return fractal()
             ->collection($restocks)

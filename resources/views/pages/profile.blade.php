@@ -3,7 +3,7 @@
 @section('body')
 <div class="content">
   <div class="container-fluid">
-    <form>
+    <form id="FormValidation">
     {{csrf_field()}}  
     <div class="row">
       <div class="col-md-8">
@@ -15,25 +15,21 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-5">
-                <div class="form-group bmd-form-group is-filled">
+                <div class="form-group ">
                   <label class="bmd-label-floating">Username </label>
-                  <input type="text" class="form-control" value="{{auth()->user()->username}}" disabled>
+                  <input type="text" class="form-control" id="username" value="{{$profile->username}}" disabled>
                 </div>
               </div>
               <div class="col-md-7">
-                <div class="form-group bmd-form-group is-filled">
+                <div class="form-group">
                   <label class="bmd-label-floating">Fullname</label>
-                  <input type="text" class="form-control" value="{{auth()->user()->name}}">
+                  <input name="fullname" type="text" class="form-control" id="fullname" required="true" value="{{$profile->name}}">
                 </div>
               </div>
               <div class="col-md-12">
-              <div class="form-group bmd-form-group">
-                    <label for="exampleEmail" class="bmd-label-floating"> Email Address *</label>
-                    <input type="email" class="form-control" id="exampleEmail" required="true" aria-required="true">
-                </div>
-                <div class="form-group bmd-form-group is-filled">
+                <div class="form-group">
                   <label class="bmd-label-floating">Email address</label>
-                  <input type="email" class="form-control" required="true" value="{{auth()->user()->email}}">
+                  <input name="email" type="email" class="form-control" id="email" required="true" value="{{$profile->email}}">
                 </div>
               </div>
             </div>
@@ -41,17 +37,17 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">New Password</label>
-                  <input type="text" class="form-control">
+                  <input name="password" type="password" id="password" class="form-control" minLength="6">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Confirm Password</label>
-                  <input type="text" class="form-control">
+                  <input name="confirmPassword" type="password" id="confirmPassword" equalTo="#password" class="form-control">
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+            <button type="submit" href="storages/edit" class="btn btn-primary pull-right">Update Profile</button>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -59,14 +55,14 @@
       <div class="col-md-4">
         <div class="card card-profile">
           <div class="fileinput text-center fileinput-new" data-provides="fileinput">
-            <div class="fileinput-new thumbnail" style="margin-top: 20px">
-              @if(auth()->user()->photo==null)
+            <div class="fileinput-new thumbnail" style="margin-top: 20px; margin-bottom: 50px">
+              @if($profile->photo==null)
               <img src="{{url('image/no_photo.png')}}">
               @else
               <img src="{{auth()->user()->photo}}">
               @endif
             </div>
-            <div class="fileinput-preview fileinput-exists thumbnail" style="margin-top: 20px"></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="margin-top: 20px; margin-bottom: 50px;"></div>
               <div>
                 <span class="btn btn-primary btn-round btn-file">
                   <span class="fileinput-new">Add Photo</span>
@@ -96,3 +92,27 @@
   </div>
 </div>
 @endsection
+
+@push('scripts')
+  <script>
+    function setFormValidation(id) {
+      $(id).validate({
+        highlight: function(element) {
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
+          $(element).closest('.form-check').removeClass('has-success').addClass('has-danger');
+        },
+        success: function(element) {
+          $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
+          $(element).closest('.form-check').removeClass('has-danger').addClass('has-success');
+        },
+        errorPlacement: function(error, element) {
+          $(element).closest('.form-group').append(error);
+        },
+      });
+    }
+
+    $(document).ready(function() {
+      setFormValidation('#FormValidation');
+    });
+  </script>
+@endpush

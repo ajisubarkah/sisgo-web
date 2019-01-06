@@ -19,18 +19,27 @@ Route::middleware('auth')->group(function(){
     Route::get('dashboard', 'IndexController@dashboard')
         ->name('dashboard');
 
-    Route::get('storages', 'IndexController@storage')
-        ->name('storages');
-
     Route::prefix('storages')->group(function(){
-        Route::get('edit', 'Storages/StoragesController@editStorage');
-        Route::post('editgoods', 'Storages/StoragesController@editGoods');
-        Route::get('view', 'Storages/StoragesController@view');
+        Route::get('/', 'IndexController@storage')
+            ->name('storages');
+        Route::get('{id}/edit', 'Storages\EditController@edit');
+        Route::post('', 'Storages\EditController@editGoods')
+            ->name('editgoods');
+        Route::get('view', 'Storages\ViewController@view');
     });
 
-    Route::get('account', 'IndexController@account')
-        ->name('account');
-
-    Route::get('profile', 'IndexController@profile')
-        ->name('profile');
+    Route::prefix('account')->group(function(){
+        Route::get('/', 'IndexController@account')
+            ->name('account');
+        Route::get('new', 'Account\NewController@index');
+        Route::post('', 'Account\NewController@newAccount')
+            ->name('newaccount');
+    });
+    
+    Route::prefix('profile')->group(function(){
+        Route::get('/', 'IndexController@profile')
+            ->name('profile');
+        Route::post('update', 'Profiles\UpdateController@update')
+            ->name('updateprofile');
+    });
 });

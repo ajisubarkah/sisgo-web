@@ -285,6 +285,12 @@ input[type="checkbox"] {
     padding: 0;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
@@ -18192,6 +18198,9 @@ label {
     text-align: center;
     vertical-align: middle;
     max-width: 250px;
+    min-width: 250px;
+    max-height: 250px;
+    min-height: 250px;
     box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42),
         0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
@@ -18200,7 +18209,7 @@ label {
     max-width: 100px;
 }
 .fileinput .thumbnail > img {
-    max-height: 100%;
+    height: 100%;
     width: 100%;
 }
 .fileinput .btn {
