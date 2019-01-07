@@ -30,7 +30,7 @@ class NewController extends Controller
         ]);
         
         if($request->hasFile('photo')) {
-            $fileNameToStore = $request->id . '.jpg';
+            $fileNameToStore = $request->barcode . '.jpg';
             
             $path = $request->file('photo')->storeAs('public/goods', $fileNameToStore);
             
