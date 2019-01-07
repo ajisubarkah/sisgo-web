@@ -43,10 +43,10 @@
                                                 <i class="material-icons">edit</i>
                                                 <div class="ripple-container"></div>
                                             </a>
-                                            <button type="button" rel="tooltip" class="btn btn-primary btn-link btn-sm" data-original-title="Detail Good">
+                                            <a style="background: none; border: none" href="{{url('storages/'.$data->id.'/view')}}" rel="tooltip" class="btn btn-primary btn-link btn-sm" data-original-title="Detail Good">
                                                 <i class="material-icons">visibility</i>
                                                 <div class="ripple-container"></div>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>

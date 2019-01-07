@@ -26,6 +26,7 @@
             @yield('body')
             @include('components.footer')
         </div>
+        @include('templates.message')
     </div>
     <!--   Core JS Files   -->
     <script src="{{url('js/core/jquery.min.js')}}"></script>

@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function(){
         Route::get('{id}/edit', 'Storages\EditController@edit');
         Route::post('', 'Storages\EditController@editGoods')
             ->name('editgoods');
-        Route::get('view', 'Storages\ViewController@view');
+        Route::get('{id}/view', 'Storages\ViewController@index');
     });
     Route::prefix('account')->group(function(){
         Route::get('/', 'IndexController@account')

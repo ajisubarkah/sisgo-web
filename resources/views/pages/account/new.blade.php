@@ -1,10 +1,11 @@
 @extends('templates.default')
 
 @section('body')
+@include('templates.message')
 <div class="content">
     <a href="{{url('account')}}" class="btn btn-primary btn-round" style="margin: 0px 30px 30px">Back</a>
     <div class="container-fluid">
-        <form method="POST" action="{{URL::route('newaccount')}}" id="FormValidation">
+        <form method="POST" action="{{URL::route('newaccount')}}" enctype="multipart/form-data" id="FormValidation">
             {{csrf_field()}}  
             <div class="row">
                 <div class="col-md-8">

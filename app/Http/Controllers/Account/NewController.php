@@ -17,7 +17,7 @@ class NewController extends Controller
             'username' => 'required|unique:users',
             'fullname' => 'required',
             'email' => 'email|required',
-            'photo' => 'image|max: 5000|nullable',
+            'photo' => 'image|max: 5000',
             'password' => 'confirmed|required|min: 6'          
         ]);
 
@@ -37,8 +37,6 @@ class NewController extends Controller
             $user->photo = 'storage/profiles/' . $fileNameToStore;
             $user->save();
         }
-
-        
 
         return redirect('account');
     }
