@@ -20,7 +20,9 @@
                                     <th><strong>ID</strong></th>
                                     <th><strong>Username</strong></th>
                                     <th><strong>Fullname</strong></th>
-                                    <th><strong>Email</strong></th>                                    
+                                    <th><strong>Email</strong></th>
+                                    <th><strong>Date Create</strong></th>
+                                    <th><strong>Last Update</strong></th>
                                 </thead>
                                 @foreach($users as $data)
                                 <tbody>
@@ -29,6 +31,8 @@
                                         <td>{{$data->username}}</td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->email}}</td>
+                                        <td>{{$data->created_at->format('d M y H:i')}}</td>
+                                        <td>{{$data->updated_at->format('d M y H:i')}}</td>
                                     </tr>
                                 </tbody>
                                 @endforeach

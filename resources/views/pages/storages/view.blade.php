@@ -26,7 +26,7 @@
                                         <td name="id">{{$data->id}}</td>
                                         <td>{{App\User::find(App\Restock::find($data->restock_id)->user_id)->username}}</td>
                                         <td>{{$data->add_stock}}</td>
-                                        <td>{{App\Restock::find($data->restock_id)->created_at}}</td>
+                                        <td>{{App\Restock::find($data->restock_id)->created_at->format('d M y H:i')}}</td>
                                     </tr>
                                 </tbody>
                                 @endforeach
