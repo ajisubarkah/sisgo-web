@@ -18,12 +18,17 @@ Route::get('v1/users', 'UserController@User');
 Route::post('v1/register', 'AuthController@Register');
 Route::post('v1/login', 'AuthController@Login');
 
-Route::get('v1/restock/listrestock', 'RestockController@getList');
-Route::post('v1/restock/insertrestock', 'RestockController@addRestock');
+Route::prefix('v1/good')->group(function() {
+    Route::get('listgoods', 'GoodsController@goodsList');
+    Route::post('detailgood', 'GoodsController@detailGood');
+    
+    Route::prefix('restock')->group(function() {
+        Route::get('listrestock', 'RestockController@getList');
+        Route::post('insertrestock', 'RestockController@addRestock');        
+    });
 
-Route::get('v1/good/listgoods', 'GoodsController@goodsList');
-Route::post('v1/good/detailgood', 'GoodsController@detailGood');
-
-Route::post('v1/good/stock/updatestock','GoodStockController@addStock');
-Route::post('v1/good/stock/liststock','GoodStockController@listStock');
-
+    Route::prefix('stock')->group(function() {
+        Route::post('insertstock','GoodStockController@addStock');
+        Route::post('liststock','GoodStockController@listStock');
+    });
+});
