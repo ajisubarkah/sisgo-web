@@ -12,7 +12,7 @@ use League\Fractal\Resource\Collection;
 class RestockController extends Controller
 {
     public function getList(){
-        $restocks = Restock::all();
+        $restocks = Restock::orderBy('created_at', 'desc')->get();
 
         return fractal()
             ->collection($restocks)
@@ -25,6 +25,6 @@ class RestockController extends Controller
             'user_id'=>$request->user_id,
         ]);
         
-        return response()->json(['status'=>201,'id'=>$restocks->id]);
+        return response()->json(['status'=>201,'id'=>$restocks->id, 'strNameGoods'=>null]);
     }
 }
