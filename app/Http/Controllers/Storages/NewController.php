@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Storages;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Goods;
-
+use App\ImageGoods;
 class NewController extends Controller
 {
     public function index() {
@@ -30,12 +30,14 @@ class NewController extends Controller
         ]);
         
         if($request->hasFile('photo')) {
-            $fileNameToStore = $request->barcode . '.jpg';
+            $fileNameToStore = $request->barcode . '-1.jpg';
             
             $path = $request->file('photo')->storeAs('public/goods', $fileNameToStore);
             
-            $goods->image = 'storage/goods/' . $fileNameToStore;
-            $goods->save();
+            ImageGoods::create([
+                'goods_id'=>$goods->id,
+                'url'=>'storage/goods/' . $fileNameToStore
+            ]);
         }
         return redirect('storages');
     }

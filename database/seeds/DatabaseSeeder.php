@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Goods;
+use App\ImageGoods;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->delete();
         User::create([
             'username'=>'subarkah',
             'name'=>'Mohammad Aji Subarkah',
@@ -36,22 +36,20 @@ class DatabaseSeeder extends Seeder
             'api_token'=>bcrypt('123456')
         ]);
 
-        DB::table('goods')->delete();
         Goods::create([
             'name'=>'Kursi Kayu',
             'barcode'=>'999234567812',
             'purchase'=>40000,
             'selling'=>50000,
-            'stock'=>0,
-            'image'=>'storage/goods/999234567812.jpg'
+            'stock'=>0
         ]);
+
         Goods::create([
             'name'=>'Kursi Plastik',
             'barcode'=>'999234567811',
             'purchase'=>25000,
             'selling'=>32500,
             'stock'=>0,
-            'image'=>'storage/goods/999234567811.jpg'
         ]);
     }
 }

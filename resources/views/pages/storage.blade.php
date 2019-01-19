@@ -19,6 +19,7 @@
                                 <thead class="text-primary">
                                     <th><strong>ID</strong></th>
                                     <th><strong>Name</strong></th>
+                                    <th><strong>QRCode</strong></th>
                                     <th><strong>Barcode</strong></th>
                                     <th><strong>Selling Price</strong></th>
                                     <th><strong>Purchase Price</strong></th>
@@ -34,6 +35,7 @@
                                     @endif
                                         <td name="id">{{$data->id}}</td>
                                         <td>{{$data->name}}</td>
+                                        <td><img src='data:image/png;base64,{!!base64_encode(QrCode::format("png")->size(100)->generate($data->barcode))!!}'></td>
                                         <td>{{$data->barcode}}</td>
                                         <td>{{App\Goods::convertToRupiah($data->selling)}}</td>
                                         <td>{{App\Goods::convertToRupiah($data->purchase)}}</td>                                        

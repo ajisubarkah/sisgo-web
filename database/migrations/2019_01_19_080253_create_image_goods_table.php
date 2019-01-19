@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRestockTable extends Migration
+class CreateImageGoodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateRestockTable extends Migration
      */
     public function up()
     {
-        Schema::create('restock', function (Blueprint $table) {
+        Schema::create('image_goods', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('goods_id')->unsigned()->foreign('goods_id')->references('id')->on('goods')->onDelete('cascade');
+            $table->string('url');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateRestockTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('restock');
+        Schema::dropIfExists('image_goods');
     }
 }

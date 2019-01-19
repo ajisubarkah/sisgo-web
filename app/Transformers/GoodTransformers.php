@@ -9,7 +9,7 @@ use League\Fractal\Resource\Collection;
 
 class GoodTransformers extends TransformerAbstract{
     public function transform(Goods $good){
-      $images = url($good->image);
+        $images = $good->getImage;
         return [
             'intId' => $good->id,
             'strName' => $good->name,

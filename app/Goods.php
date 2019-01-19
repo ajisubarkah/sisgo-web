@@ -14,6 +14,9 @@ class Goods extends Model
         'name', 'barcode', 'purchase', 'selling', 'stock', 'image',
     ];
 
+    public function getImage(){
+        return $this->hasMany(ImageGoods::class,'goods_id');
+    }
     public static function convertToRupiah($angka){
         return 'Rp. ' . strrev(implode('.',str_split(strrev(strval($angka)),3)));
     }

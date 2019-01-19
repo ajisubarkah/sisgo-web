@@ -11,12 +11,12 @@
                             <i class="material-icons">content_copy</i>
                         </div>
                         <p class="card-category">Used Space</p>
-                        <h3 class="card-title">{{$data['countStock']}}/50</h3>
+                        <h3 class="card-title">{{$data['countStock']}}/500</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
                             <i class="material-icons text-danger">warning</i>
-                            <a href="#pablo">Get More Space...</a>
+                            <a href="/">Get More Space...</a>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">local_offer</i> Tracked from Github
+                            <i class="material-icons">local_offer</i> Tracked from Last Update
                         </div>
                     </div>
                 </div>
@@ -77,13 +77,13 @@
                         <div class="ct-chart" id="dailySalesChart"></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Daily Sales</h4>
+                        <h4 class="card-title">Graph Storage</h4>
                         <p class="card-category">
-                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today update.</p>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">access_time</i> updated 4 minutes ago
+                                <i class="material-icons">access_time</i> Last update
                             </div>
                         </div>
                     </div>
