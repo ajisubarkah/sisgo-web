@@ -63,9 +63,9 @@ class AuthController extends Controller
 
         if(Auth::attempt(['username'=>$request->username, 'password'=>$request->password])){
             $users = $user->find(Auth::user()->id);
-            return response()->json(['status'=>200,'message'=>'OK','id'=>$users->id,'token'=>$users->api_token]);
+            return response()->json(['status'=>200,'message'=>'OK','id'=>$users->id,'fullname'=>$users->name,'token'=>$users->api_token]);
         } else {
-            return response()->json(['status'=>401,'message'=>'Unauthorized','id'=>null,'token'=>null]);
+            return response()->json(['status'=>401,'message'=>'Unauthorized','id'=>null,'fullname'=>null,'token'=>null]);
         }
 
     }
