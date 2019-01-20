@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function(){
         Route::post('new', 'Storages\NewController@goods')
             ->name('newgoods'); 
         Route::get('{id}/edit', 'Storages\EditController@edit');
+        Route::post('refresh', 'Storages\EditController@removeImage')
+            ->name('removeimg');
         Route::post('', 'Storages\EditController@editGoods')
             ->name('editgoods');
         Route::get('{id}/view', 'Storages\ViewController@index');

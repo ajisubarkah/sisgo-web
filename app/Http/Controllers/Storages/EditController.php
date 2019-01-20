@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Storages;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Goods;
 use App\ImageGoods;
@@ -12,6 +13,13 @@ class EditController extends Controller
     public function edit($id) {
         $data = Goods::find($id);
         return view('pages.storages.edit')->with(['goods'=>$data]);
+    }
+
+    public function removeImage(Request $req) {
+        ImageGoods::where('id',$req->id)->delete();
+        $files = preg_replace("/storage/","/app/public",$req->file);
+        Storage::delete($files);
+        return redirect()->back()->with(['success'=>'Photo has been removed!']);
     }
 
     public function editGoods(Request $request) {

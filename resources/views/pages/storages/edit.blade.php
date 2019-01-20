@@ -1,20 +1,11 @@
 @extends('templates.default') 
 @section('body')
 <div class="content">
-    <a
-        href="{{ url('storages') }}"
-        class="btn btn-primary btn-round"
-        style="margin: 0px 30px 30px"
-        >Back</a
-    >
+    <a href="{{ url('storages') }}" class="btn btn-primary btn-round" style="margin: 0px 30px 30px">Back</a>
     <div class="container-fluid">
-        <form
-            method="POST"
-            action="{{URL::route('editgoods')}}"
-            enctype="multipart/form-data"
-            id="FormValidation"
-        >
-            @csrf <input type="hidden" name="id" value="{{$goods->id}}" />
+        <form method="POST" action="{{URL::route('editgoods')}}" enctype="multipart/form-data" id="FormValidation">
+            @csrf 
+            <input type="hidden" name="id" value="{{$goods->id}}" />
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -28,108 +19,50 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group ">
-                                        <label class="bmd-label-floating"
-                                            >Name</label
-                                        >
-                                        <input
-                                            name="name"
-                                            type="text"
-                                            class="form-control"
-                                            id="name"
-                                            required="true"
-                                            value="{{$goods->name}}"
-                                        />
+                                        <label class="bmd-label-floating">Name</label>
+                                        <input name="name" type="text" class="form-control" id="name" required="true" value="{{$goods->name}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating"
-                                            >Barcode</label
-                                        >
-                                        <input
-                                            name="barcode"
-                                            type="text"
-                                            class="form-control"
-                                            id="barcode"
-                                            required="true"
-                                            value="{{$goods->barcode}}"
-                                        />
+                                        <label class="bmd-label-floating">Barcode</label>
+                                        <input name="barcode" type="text" class="form-control" id="barcode" required="true" value="{{$goods->barcode}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating"
-                                            >Selling Price</label
-                                        >
-                                        <input
-                                            name="selling"
-                                            type="text"
-                                            class="form-control"
-                                            id="selling"
-                                            required="true"
-                                            value="{{App\Goods::convertToRupiah($goods->selling)}}"
-                                        />
+                                        <label class="bmd-label-floating">Selling Price</label>
+                                        <input name="selling" type="text" class="form-control" id="selling" required="true" value="{{App\Goods::convertToRupiah($goods->selling)}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating"
-                                            >Purchase Price</label
-                                        >
-                                        <input
-                                            name="purchase"
-                                            type="text"
-                                            class="form-control"
-                                            id="purchase"
-                                            required="true"
-                                            value="{{App\Goods::convertToRupiah($goods->purchase)}}"
-                                        />
+                                        <label class="bmd-label-floating" >Purchase Price</label>
+                                        <input name="purchase" type="text" class="form-control" id="purchase" required="true" value="{{App\Goods::convertToRupiah($goods->purchase)}}"/>
                                     </div>
                                 </div>
                             </div>
-                            <button
-                                type="submit"
-                                class="btn btn-primary pull-right"
-                            >
-                                Update Goods
-                            </button>
+                            <button type="submit" class="btn btn-primary pull-right">Update Goods</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card card-profile">
-                        <div
-                            class="fileinput text-center fileinput-new"
-                            data-provides="fileinput"
-                        >
-                            <div
-                                class="fileinput-new thumbnail"
-                                style="margin-top: 20px; margin-bottom: 50px"
-                            >
-                                <img
-                                    class="thumbnail"
-                                    src="{{ url('image/no_photo.png') }}"
-                                />
+                        <div class="fileinput text-center fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail" style="margin-top: 20px; margin-bottom: 50px">
+                                <img class="thumbnail" src="{{ url('image/no_photo.png') }}"/>
                             </div>
-                            <div
-                                class="fileinput-preview fileinput-exists thumbnail"
-                                style="margin-top: 20px; margin-bottom: 50px;"
-                            ></div>
+                            <div class="fileinput-preview fileinput-exists thumbnail" style="margin-top: 20px; margin-bottom: 50px;"></div>
                             <div>
-                                <span
-                                    class="btn btn-primary btn-round btn-file"
-                                >
+                                <span class="btn btn-primary btn-round btn-file">
                                     <span class="fileinput-new">Add Photo</span>
                                     <span class="fileinput-exists">Change</span>
                                     <input type="hidden" />
                                     <input type="file" name="photo" />
                                 </span>
                                 <br />
-                                <a
-                                    class="btn btn-danger btn-round fileinput-exists"
-                                    data-dismiss="fileinput"
-                                >
+                                <a class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
                                     <i class="fa fa-times"></i>Remove
                                 </a>
                             </div>
@@ -142,8 +75,14 @@
         <div class="row">
             @foreach($goods->getImage as $imeg)
             <div class="col-md-3 ml-5">
-                <div class="fileinput fileinput-new thumbnail">
-                    <img class="thumbnail" src="{{url($imeg->url)}}" />
+                <div class="fileinput" style="display: inline;">
+                    <form method="POST" action="{{URL::route('removeimg')}}" enctype="multipart/form-data" id="FormValidation">
+                        @csrf 
+                        <input type="hidden" name="id" value="{{$imeg->id}}"/>
+                        <input type="hidden" name="file" value="{{$imeg->url}}"/>
+                        <button type="submit" style="border: none; background: none;"><i class="material-icons">close</i></button>
+                        <img class="thumbnail" src="{{url($imeg->url)}}" />
+                    </form>
                 </div>
             </div>
             @endforeach
